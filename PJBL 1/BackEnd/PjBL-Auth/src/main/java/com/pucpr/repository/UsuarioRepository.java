@@ -13,6 +13,14 @@ public class UsuarioRepository {
     private final String FILE_PATH = "usuarios.json";
     private final ObjectMapper mapper = new ObjectMapper();
 
+
+
+//------------------------------------Busca usuario pelo email
+    public Optional<Usuario> findByEmail(String email) {
+        return findAll().stream()
+                .filter(u -> u.getEmail().equalsIgnoreCase(email))
+                .findFirst();
+    }
     /**
      * Busca um usuário pelo e-mail dentro do arquivo JSON.
      * * TODO: O ALUNO DEVE IMPLEMENTAR:
@@ -21,8 +29,22 @@ public class UsuarioRepository {
      * 3. Importante: A comparação de e-mail deve ser 'case-insensitive' (ignorar maiúsculas/minúsculas).
      * 4. Retornar um Optional.of(usuario) se encontrar, ou Optional.empty() se não existir.
      */
-    public Optional<Usuario> findByEmail(String email) {
-        return Optional.empty();
+//------------------------------------
+
+//------------------------------------Listagem de usuarios no json
+    public List<Usuario> findAll() {
+        File file = new File(FILE_PATH);
+
+        if (!file.exists()) {
+            return new ArrayList<>();
+        }
+
+        try {
+            return mapper.readValue(file, new TypeReference<List<Usuario>>() {});
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
     }
 
     /**
@@ -33,10 +55,26 @@ public class UsuarioRepository {
      * 3. Se existir, usar o 'mapper.readValue' do Jackson para converter o conteúdo do arquivo
      * em uma List<Usuario>. Dica: Use 'new TypeReference<List<Usuario>>(){}'.
      */
-    public List<Usuario> findAll() {
-        return new ArrayList<>();
-    }
+//------------------------------------
 
+//------------------------------------SAVE
+
+    public void save(Usuario usuario) throws IOException {
+        List<Usuario> usuarios = findAll();
+
+        // Verifica se email já existe
+        boolean exists = usuarios.stream()
+                .anyMatch(u -> u.getEmail().equalsIgnoreCase(usuario.getEmail()));
+
+        if (exists) {
+            throw new RuntimeException("E-mail já cadastrado");
+        }
+
+        usuarios.add(usuario);
+
+        mapper.writerWithDefaultPrettyPrinter()
+                .writeValue(new File(FILE_PATH), usuarios);
+    }
     /**
      * Salva um novo usuário no arquivo JSON.
      * * TODO: O ALUNO DEVE IMPLEMENTAR:
@@ -46,7 +84,6 @@ public class UsuarioRepository {
      * 4. Utilizar 'mapper.writerWithDefaultPrettyPrinter().writeValue' para gravar a lista
      * atualizada no arquivo, garantindo que o JSON fique legível (formatado).
      */
-    public void save(Usuario usuario) throws IOException {
-        // Implementar lógica de persistência
-    }
+//------------------------------------
+
 }
