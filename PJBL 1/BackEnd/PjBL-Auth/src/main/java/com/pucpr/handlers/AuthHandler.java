@@ -56,10 +56,10 @@ public class AuthHandler {
             Map<String, String> body = mapper.readValue(is, Map.class);
 
             String email = body.get("email");
-            String senha = body.get("senha");
+            String password = body.get("password");
 
             // Validação extra pra evitar erro
-            if (email == null || senha == null) {
+            if (email == null || password == null) {
                 String response = "{\"error\":\"JSON inválido\"}";
                 addCorsHeaders(exchange);
                 byte[] bytes = response.getBytes("UTF-8");
@@ -75,7 +75,7 @@ public class AuthHandler {
 
             //    b) Se existir, use BCrypt.checkpw(senhaInformada, senhaDoArquivo) para validar.
             if (userOpt.isEmpty() ||
-                    !BCrypt.checkpw(senha, userOpt.get().getSenhaHash())) {
+                    !BCrypt.checkpw(password, userOpt.get().getSenhaHash())) {
 
                 // 4. REGRA DE OURO DA SEGURANÇA:
                 //    - NUNCA use .equals() ou == para comparar senhas. O BCrypt é a sugestão.
@@ -136,10 +136,10 @@ public class AuthHandler {
             Map<String, String> body = mapper.readValue(is, Map.class);
 
             String email = body.get("email");
-            String senha = body.get("senha");
-            String nome = body.get("nome"); // opcional
+            String password = body.get("password");
+            String name = body.get("name"); // opcional
 
-            if (email == null || senha == null) {
+            if (email == null || password == null) {
                 String response = "{\"error\":\"JSON inválido\"}";
                 addCorsHeaders(exchange);
                 byte[] bytes = response.getBytes("UTF-8");
@@ -166,14 +166,14 @@ public class AuthHandler {
             //    Gere o hash: BCrypt.hashpw(senhaPura, BCrypt.gensalt(12)).
             //    O "salt" (fator 12) protege contra ataques de Rainbow Tables.
 
-            String senhaHash = BCrypt.hashpw(senha, BCrypt.gensalt(12));
+            String senhaHash = BCrypt.hashpw(password, BCrypt.gensalt(12));
 
             // 3. PERSISTÊNCIA:
             //    Crie uma nova instância de Usuario (model) com a senha já HASHEADA.
             //    Use o repository.save(novoUsuario) para gravar no arquivo JSON.
 
             Usuario novoUsuario = new Usuario(
-                    nome != null ? nome : email, // fallback se não vier nome
+                    name != null ? name : email, // fallback se não vier nome
                     email,
                     senhaHash,
                     "USER"
