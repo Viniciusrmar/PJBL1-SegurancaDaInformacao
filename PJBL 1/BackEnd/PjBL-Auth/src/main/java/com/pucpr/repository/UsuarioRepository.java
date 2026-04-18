@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class UsuarioRepository {
-    private final String FILE_PATH = "usuarios.json";
+    private final String FILE_PATH = "PJBL 1/BackEnd/PjBL-Auth/usuarios.json";
     private final ObjectMapper mapper = new ObjectMapper();
 
 
