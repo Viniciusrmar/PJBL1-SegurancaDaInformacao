@@ -1,0 +1,13 @@
+[ {
+  "id" : "9fc4474d-92cc-4e84-a366-803eefdbda15",
+  "nome" : "Vinicius",
+  "email" : "viniciusrobaskievicz@gmail.com",
+  "role" : "USER",
+  "senhaHash" : "$2a$12$PWNObSjmj/V.KziirPUAFeAQJMRBKwUO1va1lT4LyS2RDNbRZk342"
+}, {
+  "id" : "33b0cf6d-57d6-4286-9d19-c27661cca691",
+  "nome" : "asd",
+  "email" : "asd@gmail.com",
+  "role" : "USER",
+  "senhaHash" : "$2a$12$Z..5QZjIGTGPPSMO6Q1q4u.y4MJhe/dSBijSEhwoOfb7SE8/MWgsO"
+} ]

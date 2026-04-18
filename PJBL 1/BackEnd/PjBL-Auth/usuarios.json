@@ -1,0 +1,19 @@
+[ {
+  "id" : "977ea698-e6f6-4594-9e8f-cb869269d613",
+  "nome" : "lol",
+  "email" : "lol@gmail.com",
+  "role" : "USER",
+  "senhaHash" : "$2a$12$5k5hUVZdUCc7ym/UDckmc.8lrmTJkbDvcWBouvTVL.YgBYL8YC1cG"
+}, {
+  "id" : "3fe8d972-8e85-4289-9458-51fbba200dab",
+  "nome" : "Julio",
+  "email" : "julio@gmail.com",
+  "role" : "USER",
+  "senhaHash" : "$2a$12$hpDwqhMFfYe8/q0kRe5lVuXrQtoxlE/BtgPTr3vl9kv2Kdb.TYybC"
+}, {
+  "id" : "49dff6fe-c6b4-485e-aa9e-31c3fb035217",
+  "nome" : "Julio",
+  "email" : "julio2@gmail.com",
+  "role" : "USER",
+  "senhaHash" : "$2a$12$OVT7HDtmo882vLNAp0UdeO94H3o19FCXyT946eOHuBnVMPu3Ad7gC"
+} ]
