@@ -16,4 +16,22 @@
   "email" : "julio2@gmail.com",
   "role" : "USER",
   "senhaHash" : "$2a$12$OVT7HDtmo882vLNAp0UdeO94H3o19FCXyT946eOHuBnVMPu3Ad7gC"
+}, {
+  "id" : "b0c461f1-a9fe-44f8-bec2-33bb18f191ed",
+  "nome" : "Maria",
+  "email" : "maria@gmail.com",
+  "role" : "USER",
+  "senhaHash" : "$2a$12$V8D9Nhqp2oQ6QSD5FQng/uj.Jpfe9J7T5nkARecTrBYx38D.aP5UG"
+}, {
+  "id" : "ca36187f-fccc-4a16-b0a7-91246d206885",
+  "nome" : "Lorena",
+  "email" : "lorena@gmail.com",
+  "role" : "USER",
+  "senhaHash" : "$2a$12$PGs16GkdShMffRE.wjOYPe/MHqdgv9EHU2cMnJ9TeYT0BKlJuZMCK"
+}, {
+  "id" : "c11caa46-2040-4dd5-8292-43b7360a66b7",
+  "nome" : "Vinicius",
+  "email" : "viniciusrobaskievicz@gmail.com",
+  "role" : "USER",
+  "senhaHash" : "$2a$12$lTqS1NFWshcQkJ/4k5gKBuaDNG96hn8uUgdh5ef/nsQw5.WSJVLCm"
 } ]

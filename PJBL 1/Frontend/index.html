@@ -424,7 +424,7 @@ async function handleRegister() {
       body: JSON.stringify({ name, email, password: pass })
     });
 
-    const data = await res.json();
+const data = res.status !== 201 ? await res.json() : {};
 
     if (res.ok || res.status === 201) {
       showAlert('reg-alert', 'Conta criada! Faça login para continuar.', 'success');
