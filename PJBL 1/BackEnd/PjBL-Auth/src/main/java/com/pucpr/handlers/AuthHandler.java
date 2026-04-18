@@ -62,8 +62,9 @@ public class AuthHandler {
             if (email == null || senha == null) {
                 String response = "{\"error\":\"JSON inválido\"}";
                 addCorsHeaders(exchange);
-                exchange.sendResponseHeaders(400, response.length());
-                exchange.getResponseBody().write(response.getBytes());
+                byte[] bytes = response.getBytes("UTF-8");
+                exchange.sendResponseHeaders(400, bytes.length);
+                exchange.getResponseBody().write(bytes);
                 exchange.close();
                 return;
             }
@@ -81,8 +82,9 @@ public class AuthHandler {
                 //    - Em caso de falha, retorne uma mensagem GENÉRICA
                 String response = "{\"error\":\"E-mail ou senha inválidos\"}";
                 addCorsHeaders(exchange);
-                exchange.sendResponseHeaders(401, response.length());
-                exchange.getResponseBody().write(response.getBytes());
+                byte[] bytes = response.getBytes("UTF-8");
+                exchange.sendResponseHeaders(401, bytes.length);
+                exchange.getResponseBody().write(bytes);
                 exchange.close();
                 return;
             }
@@ -93,8 +95,9 @@ public class AuthHandler {
 
             String response = "{\"token\":\"" + token + "\"}";
             addCorsHeaders(exchange);
-            exchange.sendResponseHeaders(200, response.length());
-            exchange.getResponseBody().write(response.getBytes());
+            byte[] bytes = response.getBytes("UTF-8");
+            exchange.sendResponseHeaders(200, bytes.length);
+            exchange.getResponseBody().write(bytes);
             exchange.close();
 
         } catch (Exception e) {
@@ -139,8 +142,9 @@ public class AuthHandler {
             if (email == null || senha == null) {
                 String response = "{\"error\":\"JSON inválido\"}";
                 addCorsHeaders(exchange);
-                exchange.sendResponseHeaders(400, response.length());
-                exchange.getResponseBody().write(response.getBytes());
+                byte[] bytes = response.getBytes("UTF-8");
+                exchange.sendResponseHeaders(400, bytes.length);
+                exchange.getResponseBody().write(bytes);
                 exchange.close();
                 return;
             }
@@ -150,8 +154,9 @@ public class AuthHandler {
             if (existingUser.isPresent()) {
                 String response = "{\"error\":\"E-mail já cadastrado\"}";
                 addCorsHeaders(exchange);
-                exchange.sendResponseHeaders(400, response.length());
-                exchange.getResponseBody().write(response.getBytes());
+                byte[] bytes = response.getBytes("UTF-8");
+                exchange.sendResponseHeaders(400, bytes.length);
+                exchange.getResponseBody().write(bytes);
                 exchange.close();
                 return;
             }
@@ -211,8 +216,9 @@ public class AuthHandler {
             if (authHeader == null || !authHeader.startsWith("Bearer ")) {   
                 String response = "{\"error\":\"Token ausente ou inválido\"}";
                 addCorsHeaders(exchange);
-                exchange.sendResponseHeaders(401, response.length());
-                exchange.getResponseBody().write(response.getBytes());
+                byte[] bytes = response.getBytes("UTF-8");
+                exchange.sendResponseHeaders(401, bytes.length);
+                exchange.getResponseBody().write(bytes);
                 exchange.close();
                 return;
             }
@@ -222,8 +228,9 @@ public class AuthHandler {
             if (!jwtService.validateToken(token)) {
                 String response = "{\"error\":\"Token invalido ou expirado\"}";
                 addCorsHeaders(exchange);
-                exchange.sendResponseHeaders(401, response.length());
-                exchange.getResponseBody().write(response.getBytes());
+                byte[] bytes = response.getBytes("UTF-8");
+                exchange.sendResponseHeaders(401, bytes.length);
+                exchange.getResponseBody().write(bytes);
                 exchange.close();
                 return;
             }
@@ -231,8 +238,9 @@ public class AuthHandler {
             String email = jwtService.extractEmail(token); // Extraindo email do token
             String response = "{\"message\":\"Bem-vindo ao dashboard, " + email + "!\"}";
             addCorsHeaders(exchange);
-            exchange.sendResponseHeaders(200, response.length());
-            exchange.getResponseBody().write(response.getBytes());
+            byte[] bytes = response.getBytes("UTF-8");
+            exchange.sendResponseHeaders(200, bytes.length);
+            exchange.getResponseBody().write(bytes);
             exchange.close();
             return;
 
