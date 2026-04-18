@@ -10,8 +10,6 @@ public class JwtService {
 
     // TODO: O ALUNO DEVE BUSCAR DE UMA VARIÁVEL DE AMBIENTE (System.getenv)
 
-    private final String SECRET_KEY = "7f9aK2mXqL8zP1vR4tY6uB3cD9eF5gHj";
-
     private SecretKey getSigningKey() {
         String secret = System.getenv("JWT_SECRET");
         return Keys.hmacShaKeyFor(secret.getBytes());
