@@ -363,11 +363,11 @@ async function handleLogin() {
 
     const data = await res.json();
 
-    if (res.ok) {
-      // Token salvo apenas em memória — nunca em localStorage!
-      AuthStore.set(data.token);
-      window.location.href = 'dashboard.html';
-    } else {
+if (res.ok) {
+    AuthStore.set(data.token);
+    sessionStorage.setItem('_auth_bridge', data.token); // ponte temporária
+    window.location.href = 'dashboard.html';
+} else {
       // Mensagem genérica — não revela se é e-mail ou senha errada
       showAlert('login-alert', data.message || 'Credenciais inválidas. Tente novamente.');
     }
